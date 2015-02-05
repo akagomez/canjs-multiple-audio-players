@@ -1,0 +1,27 @@
+body {
+  padding: 20px;
+}
+
+.row {
+  margin-bottom: 10px;
+}
+
+cg-player button {
+  margin-right: 20px;
+}
+
+cg-song {
+  opacity: 0.5;
+}
+
+cg-song.active {
+  opacity: 1.0;
+}
+
+cg-song button {
+  margin-right: 10px;
+}
+
+.progress-bar {
+  transition: none;
+}

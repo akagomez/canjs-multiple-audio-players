@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="vendor/jquery-1.9.1.min.js"></script>
+    <script src="vendor/canjs/can.jquery.js"></script>
+    <script src="vendor/canjs/can.map.define.js"></script>
+    <script src="vendor/canjs/can.fixture.js"></script>
+    <script src="vendor/buzz/buzz.js"></script>
+    <link rel="stylesheet" href="vendor/bootstrap-3.3.2-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="src/app.css" />
+  </head>
+  <body>
+    <script id="app" type="text/mustache">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <cg-player song="player.song"></cg-player>
+          </div>
+        </div>
+
+        {{#each songs}}
+        <div class="row">
+          <div class="col-xs-12">
+            <cg-song class="{{#if isPlaying}}active{{/if}}" song="."></cg-song>
+          </div>
+        </div>
+        {{/each}}
+
+      </div>
+    </script>
+
+    <script id="cg-player" type="text/mustache">
+      <button class="btn btn-lg btn-default" can-click="playOrPause">
+        <i class="glyphicon glyphicon-{{#if song.isPlaying}}pause{{else}}play{{/if}}"></i>
+      </button> 
+      {{song.fullTitle}}
+    </script>
+
+    <script id="cg-song" type="text/mustache">
+      
+      <button class="btn btn-sm btn-default" can-click="playOrPause">
+        <i class="glyphicon glyphicon-{{#if song.isPlaying}}pause{{else}}play{{/if}}"></i>
+      </button> 
+      
+      <span class="title">
+        {{song.fullTitle}}
+      </span>
+
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{song.percentPlayed}}" aria-valuemin="0" aria-valuemax="100" style="width: {{song.percentPlayed}}%;">
+          <span class="sr-only">{{song.percentPlayed}}% Complete</span>
+        </div>
+      </div>
+
+    </script>
+
+    <script src="src/app.js"></script>
+  </body>
+</html>
